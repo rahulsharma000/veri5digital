@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary mat-elevation-z2">
+    <div class="container">
+        <a class="navbar-brand" href="#">Shop</a>
+        <div class="d-flex align-items-center mr-auto search-div">
+            <input type="text" class="form-control border-0  pl-2" placeholder="Search">
+            <span class="search-icon">
+                <mat-icon>search</mat-icon>
+            </span>
+        </div>
+       
+        <mat-icon class="shopping_cart" matBadge="{{ productService.getLocalCartProducts().length }}" matBadgeColor="warn">
+            <mat-icon>shopping_cart</mat-icon>
+        </mat-icon>
+        
+        
+    
+    </div> 
+</nav>
+
+
+<div class="container mb-5" style="margin-top:58px">
+    <div class="row">
+        <div class="col-6 col-md-1  border-right">
+          <div class="py-1 filter"><i class="fa fa-sort" aria-hidden="true"></i> Sort</div>
+        </div>
+        <div class="col-6 col-md-1 border-left">
+            <div class="py-1 filter"><i class="fa fa-filter" aria-hidden="true"></i> Filter</div>
+        </div>
+    </div>
+        <div class="row">
+                <div class="col-6 col-md-3 border" *ngFor="let product of productList" id=" {{product.id}}">
+                        <div class="py-3">
+                            <img src="{{product.img_url}}" class="img-fluid">
+                            <span class="text">{{product.name}}</span>
+                                <div class="price-wrap h5">
+                                    <span class="price">₹{{product.price}}</span>
+                                    <del class="price ml-2">₹900</del>
+                                    <span class="discount ml-2">{{product.discount}}% Off</span>
+                                </div>    
+                            <button mat-flat-button color="accent"(click)="addToCart(product)" >Add to Cart</button>
+                            
+                        </div>
+                </div>
+        </div>
+</div>
+
